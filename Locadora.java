@@ -3,9 +3,9 @@ import java.util.Collections;
 import java.util.HashMap;
 
 
-public class Locadora {
-	private Veiculo veiculoDiariaMaisCara;
-	private HashMap<String, Veiculo> veiculos;
+public class Locadora<V extends Veiculo> {
+	private V veiculoDiariaMaisCara;
+	private HashMap<String, V> veiculos;
 	
 	
 	public Locadora(){
@@ -13,7 +13,7 @@ public class Locadora {
 		veiculoDiariaMaisCara = null;
 	}
 	
-	public void addVeiculos(Veiculo v){
+	public void addVeiculos(V v){
 		String id = v.getId();
 		if (!veiculos.containsKey(id)){
 			veiculos.put(id, v);
@@ -44,9 +44,9 @@ public class Locadora {
 		return veiculos.size();
 	}
 	
-	public ArrayList<Veiculo> getVeiculosPorTipo(Class<? extends Veiculo> tipo){
-		ArrayList<Veiculo> resposta = new ArrayList<>();
-		for(Veiculo v : veiculos.values()){
+	public ArrayList<V> getVeiculosPorTipo(Class<V> tipo){
+		ArrayList<V> resposta = new ArrayList<>();
+		for(V v : veiculos.values()){
 			if (tipo.isInstance(v)){
 				resposta.add(v);
 			}
