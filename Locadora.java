@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 
@@ -43,8 +44,15 @@ public class Locadora {
 		return veiculos.size();
 	}
 	
-	public ArrayList<? extends Veiculo> getVeiculosPorTipo(Class<Veiculo> tipo){
-		ArrayList<? extends Veiculo> resposta = new ArrayList<>();
+	public ArrayList<Veiculo> getVeiculosPorTipo(Class<? extends Veiculo> tipo){
+		ArrayList<Veiculo> resposta = new ArrayList<>();
+		for(Veiculo v : veiculos.values()){
+			if (tipo.isInstance(v)){
+				resposta.add(v);
+			}
+		}
+		Collections.sort(resposta);
+		return resposta;
 	}
 	
 	public Veiculo getVeiculoDiariaMaisCara(){
