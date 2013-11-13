@@ -9,7 +9,10 @@ public class App {
 		System.out.println(loc.getDiaria("id3"));
 		System.out.println(loc.quantidadeVeiculos());
 		System.out.println(loc.getVeiculoDiariaMaisCara().getId());
-		System.out.println(loc.getVeiculosPorTipo(Aviao.class));
+		
+		for(IVeiculo v : loc.getVeiculosPorTipo(Carro.class)){
+			System.out.println(v.getId());
+		}
 	}
 
 }

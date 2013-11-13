@@ -3,9 +3,9 @@ import java.util.Collections;
 import java.util.HashMap;
 
 
-public class Locadora<V extends Veiculo> {
-	private V veiculoDiariaMaisCara;
-	private HashMap<String, V> veiculos;
+public class Locadora {
+	private IVeiculo veiculoDiariaMaisCara;
+	private HashMap<String, IVeiculo> veiculos;
 	
 	
 	public Locadora(){
@@ -13,7 +13,7 @@ public class Locadora<V extends Veiculo> {
 		veiculoDiariaMaisCara = null;
 	}
 	
-	public void addVeiculos(V v){
+	public void addVeiculos(IVeiculo v){
 		String id = v.getId();
 		if (!veiculos.containsKey(id)){
 			veiculos.put(id, v);
@@ -33,7 +33,7 @@ public class Locadora<V extends Veiculo> {
 	}
 	
 	public double getDiaria(String id){
-		Veiculo v = veiculos.get(id);
+		IVeiculo v = veiculos.get(id);
 		if (v == null){
 			// levantar excecao
 		}
@@ -44,9 +44,9 @@ public class Locadora<V extends Veiculo> {
 		return veiculos.size();
 	}
 	
-	public ArrayList<V> getVeiculosPorTipo(Class<V> tipo){
-		ArrayList<V> resposta = new ArrayList<>();
-		for(V v : veiculos.values()){
+	public ArrayList<IVeiculo> getVeiculosPorTipo(Class<? extends IVeiculo> tipo){
+		ArrayList<IVeiculo> resposta = new ArrayList<>();
+		for(IVeiculo v : veiculos.values()){
 			if (tipo.isInstance(v)){
 				resposta.add(v);
 			}
@@ -55,7 +55,7 @@ public class Locadora<V extends Veiculo> {
 		return resposta;
 	}
 	
-	public Veiculo getVeiculoDiariaMaisCara(){
+	public IVeiculo getVeiculoDiariaMaisCara(){
 		return veiculoDiariaMaisCara;
 	}
 	

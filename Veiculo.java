@@ -1,5 +1,5 @@
 
-public abstract class Veiculo implements Comparable<Veiculo>{
+public abstract class Veiculo implements IVeiculo{
 	private String id;
 	private double valorCompra;
 	
@@ -26,7 +26,7 @@ public abstract class Veiculo implements Comparable<Veiculo>{
 	
 	public abstract double getDiaria();
 
-	public int compareTo(Veiculo v){
+	public int compareTo(IVeiculo v){
 		return getId().compareTo(v.getId());
 	}
 }
